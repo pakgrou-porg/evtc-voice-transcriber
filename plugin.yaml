@@ -1,0 +1,8 @@
+name: evtc_voice_transcriber
+title: Easy Voice Transcription Caller (EVTC)
+description: Privacy-first audio/video transcription plugin for Agent Zero. Supports local (Whisper, Cohere) and cloud (Amazon STT, Turboscribe) engines. Auto-converts all audio to 16kHz mono WAV, adaptive chunking with overlap stitching, and structured meeting summaries.
+version: 0.1.0
+settings_sections: []
+per_project_config: false
+per_agent_config: false
+always_enabled: false
