@@ -25,7 +25,7 @@
 name: transcribe-and-analyze
 description: Process audio/video files into structured transcripts and JSON summaries
 web_bundle: true
-installed_path: '{project-root}/skills/bmad-voice-transcriber/workflows/transcribe-and-analyze'
+installed_path: '{project-root}/skills/evtc_voice_transcriber/workflows/transcribe-and-analyze'
 ---
 ```
 
@@ -96,4 +96,4 @@ None.
 
 ---
 
-_Spec created on 2026-04-17 via BMAD Module workflow_
+_Spec created 2026-04-17_

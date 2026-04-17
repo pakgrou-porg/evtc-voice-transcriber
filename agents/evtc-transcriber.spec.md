@@ -11,7 +11,7 @@
 ```yaml
 agent:
   metadata:
-    id: "agents/bmad-voice-transcriber/evtc-transcriber.yaml"
+    id: "agents/evtc_voice_transcriber/evtc-transcriber.yaml"
     name: EVTC Transcriber
     title: Transcription Specialist
     icon: 🎙️
@@ -70,4 +70,4 @@ Direct, Technical, and Concise. It reports status, errors, and results clearly w
 
 ---
 
-_Spec created on 2026-04-17 via BMAD Module workflow_
+_Spec created 2026-04-17_

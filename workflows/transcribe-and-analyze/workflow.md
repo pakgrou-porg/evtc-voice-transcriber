@@ -65,7 +65,7 @@ _End-to-end processing of audio/video files into full transcripts and structured
 ## Step 8 — Safe Cleanup (Conditional)
 
 - **Check:** Is `source_auto_remove` enabled in config?
-- **IF YES:** Load and execute `{project-root}/skills/bmad-voice-transcriber/workflows/safe-cleanup/workflow.md`
+- **IF YES:** Load and execute `{project-root}/skills/evtc_voice_transcriber/workflows/safe-cleanup/workflow.md`
   - Pass: source file path, transcription success=true, transcript output path
 - **IF NO:** Skip cleanup, notify user: `Source file preserved (auto-remove disabled)`
 

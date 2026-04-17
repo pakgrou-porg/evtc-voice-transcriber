@@ -17,7 +17,7 @@ Designed for privacy-conscious users, EVTC supports local inference servers (Whi
 ## Installation
 
 ```bash
-bmad install voice-transcriber
+Install from the Agent Zero Plugin Hub or via: a0 plugin install evtc_voice_transcriber
 ```
 
 During installation you will be prompted to configure:
@@ -119,10 +119,10 @@ See TODO.md for detailed status.
 
 ## Author
 
-Created via BMAD Module workflow
+Created 2026-04-17
 
 ---
 
 ## License
 
-Part of the BMAD framework. MIT License.
+MIT License.

@@ -7,7 +7,7 @@ Development roadmap for voice-transcriber module.
 ## Agents to Build
 
 - [ ] EVTC Transcriber (Transcription Specialist)
-  - Use: `bmad:bmb:agents:agent-builder`
+  - Use the agent-builder workflow
   - Spec: `agents/evtc-transcriber.spec.md`
 
 ---
@@ -15,13 +15,13 @@ Development roadmap for voice-transcriber module.
 ## Workflows to Build
 
 - [ ] transcribe-and-analyze
-  - Use: `bmad:bmb:workflows:workflow` or `/workflow`
+  - Implement using the workflow structure in this spec
   - Spec: `workflows/transcribe-and-analyze/transcribe-and-analyze.spec.md`
 - [ ] connection-test
-  - Use: `bmad:bmb:workflows:workflow` or `/workflow`
+  - Implement using the workflow structure in this spec
   - Spec: `workflows/connection-test/connection-test.spec.md`
 - [ ] safe-cleanup
-  - Use: `bmad:bmb:workflows:workflow` or `/workflow`
+  - Implement using the workflow structure in this spec
   - Spec: `workflows/safe-cleanup/safe-cleanup.spec.md`
 
 ---
@@ -39,7 +39,7 @@ Development roadmap for voice-transcriber module.
 
 ## Installation Testing
 
-- [ ] Test installation with `bmad install`
+- [ ] Test installation with `a0 plugin install`
 - [ ] Verify module.yaml prompts work correctly in A0 Configure UI
 - [ ] Verify `Test Connection` sends test.mp3 and returns response
 - [ ] Verify all agents and workflows are discoverable

@@ -13,7 +13,7 @@
 ## Installation
 
 ```bash
-bmad install voice-transcriber
+Install from the Agent Zero Plugin Hub or via: a0 plugin install evtc_voice_transcriber
 ```
 
 During installation, you will be asked:

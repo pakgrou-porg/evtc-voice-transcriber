@@ -16,14 +16,14 @@ This is mandatory for compatibility with all supported engines regardless of sou
 
 ## Step 1 — Load Configuration
 
-- **Action:** Read `module.yaml` from `{project-root}/skills/bmad-voice-transcriber/module.yaml`
+- **Action:** Read `module.yaml` from `{project-root}/skills/evtc_voice_transcriber/module.yaml`
 - **Extract:** `transcription_api_url`, `transcription_api_port`, `transcription_api_prefix`, `transcription_model_name`, `transcription_language`
 - **Build:** Full API URL using `api_client.build_api_url(url, port, prefix)`
 - **Report:** `Testing connection to: {full_api_url}` with model name
 
 ## Step 2 — Locate Test Audio File
 
-- **Action:** Verify the bundled test file exists at `{project-root}/skills/bmad-voice-transcriber/scripts/test.mp3`
+- **Action:** Verify the bundled test file exists at `{project-root}/skills/evtc_voice_transcriber/scripts/test.mp3`
 - **IF NOT FOUND:** Report error: `Test file missing. Expected: scripts/test.mp3` and HALT
 - **Report:** `Test file found: test.mp3 (~7s dialog audio)`
 

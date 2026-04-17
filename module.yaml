@@ -83,5 +83,5 @@ test_audio_path:
   prompt: "Path to the bundled test audio file (used for 'Test Connection' feature)."
   additional-parameters:
     description: "Path to a short dialog audio clip (~7s) used to validate connectivity. Audio is converted to 16kHz mono WAV before sending."
-  default: "{project-root}/skills/bmad-voice-transcriber/scripts/test.mp3"
+  default: "{project-root}/skills/evtc_voice_transcriber/scripts/test.mp3"
   result: "{value}"

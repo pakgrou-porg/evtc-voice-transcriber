@@ -25,7 +25,7 @@
 name: connection-test
 description: Validate transcription engine connectivity using a bundled test audio file
 web_bundle: true
-installed_path: '{project-root}/skills/bmad-voice-transcriber/workflows/connection-test'
+installed_path: '{project-root}/skills/evtc_voice_transcriber/workflows/connection-test'
 ---
 ```
 
@@ -91,4 +91,4 @@ None.
 
 ---
 
-_Spec created on 2026-04-17 via BMAD Module workflow_
+_Spec created 2026-04-17_

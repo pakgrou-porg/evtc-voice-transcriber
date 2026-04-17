@@ -1,6 +1,6 @@
 agent:
   metadata:
-    id: agents/bmad-voice-transcriber/evtc-transcriber.yaml
+    id: agents/evtc_voice_transcriber/evtc-transcriber.yaml
     name: EVTC Transcriber
     title: Transcription Specialist
     icon: 🎙️
@@ -32,15 +32,15 @@ agent:
 
   menu:
     - trigger: transcribe or fuzzy match on transcribe, process audio, analyze meeting, meeting summary
-      action: load {project-root}/skills/bmad-voice-transcriber/workflows/transcribe-and-analyze/workflow.md
+      action: load {project-root}/skills/evtc_voice_transcriber/workflows/transcribe-and-analyze/workflow.md
       description: '[transcribe] Process an audio or video file and return a full transcript + structured JSON summary'
 
     - trigger: test or fuzzy match on test connection, validate config, check engine, ping engine
-      action: load {project-root}/skills/bmad-voice-transcriber/workflows/connection-test/workflow.md
+      action: load {project-root}/skills/evtc_voice_transcriber/workflows/connection-test/workflow.md
       description: '[test] Validate your transcription engine configuration using the bundled test audio file'
 
     - trigger: cleanup or fuzzy match on cleanup, delete source, remove audio
-      action: load {project-root}/skills/bmad-voice-transcriber/workflows/safe-cleanup/workflow.md
+      action: load {project-root}/skills/evtc_voice_transcriber/workflows/safe-cleanup/workflow.md
       description: '[cleanup] Safely delete source audio files after verified transcription success'
 
     - trigger: help or fuzzy match on menu, help, commands
