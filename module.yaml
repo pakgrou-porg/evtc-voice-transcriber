@@ -1,0 +1,87 @@
+code: voice-transcriber
+name: "Easy Voice Transcription Caller (EVTC)"
+header: "Frictionless audio/video transcription engine for Agent Zero"
+subheader: "Privacy-first transcription with local or cloud engines, auto-chunking, and structured summaries"
+default_selected: false
+
+# NOTE: All audio is converted to 16kHz mono WAV format before being sent to the transcription service.
+# This is required for compatibility with all supported transcription engines.
+
+# Custom Configuration Variables
+
+engine_type:
+  prompt: "Which type of transcription engine are you using?"
+  additional-parameters:
+    description: "Determines the transcription backend. All audio is automatically converted to 16kHz mono WAV before submission regardless of engine type."
+  default: "local-cohere"
+  result: "{value}"
+  single-select:
+    - value: "local-whisper"
+      label: "Local Whisper / WhisperX"
+    - value: "local-cohere"
+      label: "Local Cohere Transcribe"
+    - value: "cloud-openai"
+      label: "Cloud OpenAI API"
+    - value: "cloud-amazon"
+      label: "Cloud Amazon STT"
+    - value: "cloud-turboscribe"
+      label: "Cloud Turboscribe.ai"
+
+transcription_api_url:
+  prompt: "Enter the base URL for your transcription engine (e.g., http://10.116.2.56:8101 or https://api.openai.com)."
+  additional-parameters:
+    description: "The root address of your model's API. Include the port in the URL if not using a separate port field."
+  default: "http://10.116.2.56:8101"
+  result: "{value}"
+
+transcription_api_port:
+  prompt: "Enter the port number for your transcription engine. Leave empty if the port is already included in the URL above."
+  additional-parameters:
+    description: "Leave empty if port is already included in the base URL (e.g., http://host:8101 already has the port)."
+  default: ""
+  result: "{value}"
+
+transcription_api_prefix:
+  prompt: "Enter the API endpoint prefix (e.g., /v1, /api, or empty for root)."
+  additional-parameters:
+    description: "The path prefix required by your specific model provider (e.g., /v1 for OpenAI compatible APIs)."
+  default: "/v1"
+  result: "{value}"
+
+transcription_model_name:
+  prompt: "Enter the model name to use (e.g., CohereLabs/cohere-transcribe-03-2026, whisper-large). Leave empty for engine default."
+  additional-parameters:
+    description: "The exact string identifier of the model you wish to use. Case-sensitive. Example: CohereLabs/cohere-transcribe-03-2026"
+  default: "CohereLabs/cohere-transcribe-03-2026"
+  result: "{value}"
+
+transcription_language:
+  prompt: "Enter the language code for transcription (e.g., en, es, fr). Leave empty for auto-detection."
+  additional-parameters:
+    description: "ISO 639-1 language code. Use 'en' for English. Leave empty to let the engine auto-detect."
+  default: "en"
+  result: "{value}"
+
+# Derived Parameters
+# These combine inputs into usable connection strings.
+
+api_connection_string:
+  prompt: "Connection String (Auto-generated)"
+  additional-parameters:
+    description: "A fully constructed URL used for internal API calls. Automatically combines URL, Port (if set), and Prefix."
+  default: "{transcription_api_url}{transcription_api_prefix}"
+  result: "{value}"
+
+source_auto_remove:
+  prompt: "Automatically delete source files (MP4/MP3/WAV) after successful transcription to save disk space?"
+  additional-parameters:
+    description: "If enabled, the plugin will delete the original media file after verifying the transcript was generated successfully."
+  default: true
+  result: "{value}"
+
+test_audio_path:
+  prompt: "Path to the bundled test audio file (used for 'Test Connection' feature)."
+  additional-parameters:
+    description: "Path to a short dialog audio clip (~7s) used to validate connectivity. Audio is converted to 16kHz mono WAV before sending."
+  default: "{project-root}/skills/bmad-voice-transcriber/scripts/test.mp3"
+  result: "{value}"
