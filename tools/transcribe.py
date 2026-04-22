@@ -6,7 +6,7 @@ import os          # File path operations and existence checks
 import tempfile    # Create temporary working directories for intermediate files
 import shutil      # Directory cleanup after pipeline completes
 import time        # Track total pipeline execution time
-from pathlib import Path  # Resolve plugin directory for helper imports
+from pathlib import Path  # Resolve plugin directory for locating resources
 
 from helpers.tool import Tool, Response  # A0 base Tool class and Response dataclass
 from helpers.print_style import PrintStyle  # A0 styled console output for progress logging
@@ -15,16 +15,12 @@ from helpers import plugins  # A0 plugin config loader
 # Resolve the plugin root directory (one level up from tools/)
 PLUGIN_DIR = Path(__file__).resolve().parents[1]  # /path/to/voice-transcriber/
 
-# Import EVTC helper modules from the plugin's helpers/ directory
-# Uses sys.path insertion to support both dev (project dir) and installed (usr/plugins) locations
-import sys  # System path manipulation for dynamic imports
-sys.path.insert(0, str(PLUGIN_DIR))  # Add plugin root so 'helpers' package is importable
-
-from helpers.transcoder import transcode, check_ffmpeg, get_supported_formats  # Audio format conversion
-from helpers.chunker import chunk_audio  # WAV splitting into overlapping segments
-from helpers.api_client import build_api_url, transcribe_all_chunks  # API URL construction and chunk submission
-from helpers.stitcher import stitch_transcripts  # Reassemble transcript chunks with deduplication
-from helpers.summarizer import build_summary_prompt, extract_json_from_response, summarize, save_summary  # JSON summary generation
+# Import EVTC helper modules using A0 plugin import convention
+from usr.plugins.evtc_voice_transcriber.helpers.transcoder import transcode, check_ffmpeg, get_supported_formats  # Audio format conversion
+from usr.plugins.evtc_voice_transcriber.helpers.chunker import chunk_audio  # WAV splitting into overlapping segments
+from usr.plugins.evtc_voice_transcriber.helpers.api_client import build_api_url, transcribe_all_chunks  # API URL construction and chunk submission
+from usr.plugins.evtc_voice_transcriber.helpers.stitcher import stitch_transcripts  # Reassemble transcript chunks with deduplication
+from usr.plugins.evtc_voice_transcriber.helpers.summarizer import build_summary_prompt, extract_json_from_response, summarize, save_summary  # JSON summary generation
 
 
 class TranscribeTool(Tool):  # A0 Tool subclass for the transcribe action

@@ -9,9 +9,15 @@ import shutil  # Cleanup temp directories after tests
 import subprocess  # Used to run ffmpeg for sample audio generation
 from pathlib import Path  # Resolve plugin directory paths
 
-# Add plugin root to sys.path so helpers are importable in tests
+# Add /a0 to sys.path so usr.plugins.evtc_voice_transcriber imports resolve via symlink
+# A0 framework always runs from /a0 — the symlink at /a0/usr/plugins/evtc_voice_transcriber
+# enables the standard import path 'usr.plugins.evtc_voice_transcriber.helpers...'
+if '/a0' not in sys.path:  # Avoid duplicate entries
+    sys.path.insert(0, '/a0')  # Enable 'from usr.plugins.evtc_voice_transcriber...' imports
+
+# Also add plugin root to sys.path so 'from helpers.X import Y' works in tests
 PLUGIN_DIR = Path(__file__).resolve().parents[1]  # /path/to/voice-transcriber/
-sys.path.insert(0, str(PLUGIN_DIR))  # Allow 'from helpers.X import Y' in tests
+sys.path.insert(0, str(PLUGIN_DIR))  # Allow direct helper imports in tests
 
 # Session-scoped temp dir for generated test audio (shared across all tests)
 _SESSION_TMP = tempfile.mkdtemp(prefix='evtc_session_')  # Created once at import time

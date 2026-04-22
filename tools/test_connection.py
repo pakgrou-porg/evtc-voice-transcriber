@@ -13,12 +13,9 @@ from helpers import plugins  # A0 plugin config loader
 # Resolve the plugin root directory (one level up from tools/)
 PLUGIN_DIR = Path(__file__).resolve().parents[1]  # /path/to/voice-transcriber/
 
-# Import EVTC helper modules from the plugin's helpers/ directory
-import sys  # System path manipulation for dynamic imports
-sys.path.insert(0, str(PLUGIN_DIR))  # Add plugin root so 'helpers' package is importable
-
-from helpers.transcoder import check_ffmpeg  # Check ffmpeg availability
-from helpers.api_client import build_api_url, transcribe_chunk  # API URL construction and single chunk transcription
+# Import EVTC helper modules using A0 plugin import convention
+from usr.plugins.evtc_voice_transcriber.helpers.transcoder import check_ffmpeg  # Check ffmpeg availability
+from usr.plugins.evtc_voice_transcriber.helpers.api_client import build_api_url, transcribe_chunk  # API URL construction and single chunk transcription
 
 
 class TestConnectionTool(Tool):  # A0 Tool subclass for the test_connection action
