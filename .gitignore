@@ -8,6 +8,17 @@ __pycache__/
 # WAV files (generated at runtime — not stored in repo)
 *.wav
 
+# Generated transcript artifacts
+*_transcript.txt
+*_summary.json
+
+# Runtime config (user-specific, generated at install)
+config.json
+.toggle-*
+
+# Test cache
+.pytest_cache/
+
 # OS files
 .DS_Store
 Thumbs.db
@@ -15,3 +26,12 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
+
+# BMAD artifacts (legacy — not part of A0 plugin)
+module.yaml
+module-help.csv
+TODO.md
+agents/
+workflows/
+scripts/
+docs/

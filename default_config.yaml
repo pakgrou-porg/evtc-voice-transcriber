@@ -1,0 +1,24 @@
+# default_config.yaml — Default configuration for the EVTC Voice Transcriber plugin
+# These values are used when no user/project/agent-specific config overrides exist
+# All audio is converted to 16kHz mono WAV before submission regardless of engine type
+
+# Transcription engine type: local-whisper, local-cohere, cloud-openai, cloud-amazon, cloud-turboscribe
+engine_type: "local-cohere"
+
+# Base URL for the transcription API (include port if not using the separate port field)
+transcription_api_url: "http://10.116.2.56:8101"
+
+# Optional separate port number (leave empty if port is already in the URL)
+transcription_api_port: ""
+
+# API endpoint prefix path (e.g., /v1 for OpenAI-compatible APIs)
+transcription_api_prefix: "/v1"
+
+# Model identifier string sent to the API (case-sensitive)
+transcription_model_name: "CohereLabs/cohere-transcribe-03-2026"
+
+# ISO 639-1 language code for transcription (empty for auto-detection)
+transcription_language: "en"
+
+# Automatically delete the source media file after successful transcription
+source_auto_remove: true

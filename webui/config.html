@@ -1,0 +1,139 @@
+<html>
+<head>
+    <title>EVTC Voice Transcriber Settings</title>
+    <!-- Settings panel for the Easy Voice Transcription Caller plugin -->
+    <!-- Uses Alpine.js store bindings provided by the A0 plugin settings framework -->
+    <script type="module">
+        import { store } from "/components/plugins/plugin-settings-store.js"; // A0 plugin settings store
+    </script>
+</head>
+
+<body>
+    <div x-data>
+        <!-- Only render settings when config object is available -->
+        <template x-if="config">
+            <div>
+                <!-- Section header -->
+                <div class="section-title">EVTC Voice Transcriber</div>
+                <div class="section-description">
+                    Configure the transcription engine connection and behavior.
+                    All audio is automatically converted to 16kHz mono WAV before submission.
+                </div>
+
+                <!-- Engine Type dropdown -->
+                <div class="field">
+                    <div class="field-label">
+                        <div class="field-title">Engine Type</div>
+                        <div class="field-description">
+                            Select the transcription backend. Local engines run on your own hardware.
+                            Cloud engines require an API key and internet connection.
+                        </div>
+                    </div>
+                    <div class="field-control">
+                        <select x-model="config.engine_type">
+                            <option value="local-whisper">Local Whisper / WhisperX</option>
+                            <option value="local-cohere">Local Cohere Transcribe</option>
+                            <option value="cloud-openai">Cloud OpenAI API</option>
+                            <option value="cloud-amazon">Cloud Amazon STT</option>
+                            <option value="cloud-turboscribe">Cloud Turboscribe.ai</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- API URL -->
+                <div class="field">
+                    <div class="field-label">
+                        <div class="field-title">API URL</div>
+                        <div class="field-description">
+                            Base URL for the transcription API. Include the port in the URL
+                            if not using the separate port field below.
+                        </div>
+                    </div>
+                    <div class="field-control">
+                        <input type="text" x-model="config.transcription_api_url"
+                               placeholder="http://10.116.2.56:8101" />
+                    </div>
+                </div>
+
+                <!-- API Port -->
+                <div class="field">
+                    <div class="field-label">
+                        <div class="field-title">API Port</div>
+                        <div class="field-description">
+                            Optional separate port number. Leave empty if the port is
+                            already included in the API URL above.
+                        </div>
+                    </div>
+                    <div class="field-control">
+                        <input type="text" x-model="config.transcription_api_port"
+                               placeholder="(empty)" />
+                    </div>
+                </div>
+
+                <!-- API Prefix -->
+                <div class="field">
+                    <div class="field-label">
+                        <div class="field-title">API Prefix</div>
+                        <div class="field-description">
+                            Endpoint path prefix required by your model provider
+                            (e.g., /v1 for OpenAI-compatible APIs).
+                        </div>
+                    </div>
+                    <div class="field-control">
+                        <input type="text" x-model="config.transcription_api_prefix"
+                               placeholder="/v1" />
+                    </div>
+                </div>
+
+                <!-- Model Name -->
+                <div class="field">
+                    <div class="field-label">
+                        <div class="field-title">Model Name</div>
+                        <div class="field-description">
+                            Exact model identifier string sent to the API. Case-sensitive.
+                            Leave empty to use the engine's default model.
+                        </div>
+                    </div>
+                    <div class="field-control">
+                        <input type="text" x-model="config.transcription_model_name"
+                               placeholder="CohereLabs/cohere-transcribe-03-2026" />
+                    </div>
+                </div>
+
+                <!-- Language -->
+                <div class="field">
+                    <div class="field-label">
+                        <div class="field-title">Language</div>
+                        <div class="field-description">
+                            ISO 639-1 language code (e.g., en, es, fr).
+                            Leave empty for automatic language detection.
+                        </div>
+                    </div>
+                    <div class="field-control">
+                        <input type="text" x-model="config.transcription_language"
+                               placeholder="en" />
+                    </div>
+                </div>
+
+                <!-- Auto-remove source files -->
+                <div class="field">
+                    <div class="field-label">
+                        <div class="field-title">Auto-Remove Source Files</div>
+                        <div class="field-description">
+                            Automatically delete the original audio/video file after
+                            a successful transcription to save disk space.
+                        </div>
+                    </div>
+                    <div class="field-control">
+                        <label class="checkbox-label">
+                            <input type="checkbox" x-model="config.source_auto_remove" />
+                            <span>Delete source files after transcription</span>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+        </template>
+    </div>
+</body>
+</html>
